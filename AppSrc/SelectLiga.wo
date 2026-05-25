@@ -1,4 +1,8 @@
-﻿Use cWebView.pkg
+﻿// C:\DataFlex Projects\FutbolWebApp\AppSrc\SelectLiga.wo
+// SelectLiga
+//
+
+Use cWebView.pkg
 Use cWebList.pkg
 Use cWebMenuGroup.pkg
 Use cWebMenuItem.pkg
@@ -173,4 +177,4 @@ Error DFERR_PROGRAM "NavigateForward to this from-parent child Select view not y
     End_Procedure
 
 
-End_Object
+End_Object 
