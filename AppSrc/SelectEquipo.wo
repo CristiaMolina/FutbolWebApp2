@@ -50,6 +50,7 @@ Object oSelectEquipo is a cWebView
             Set psCaption to "equipo.LigaID"
             Set piWidth to 100
         End_Object 
+       
 
         Object oDetailButton is a cWebColumnButton
             Set psCaption to "btn"
@@ -149,18 +150,12 @@ Error DFERR_PROGRAM "NavigateForward to this from-parent child Select view not y
         Case Begin
             Case (NavigateData.eNavigateType = nfFromParent)
                 // If from parent, this is a constrained drill down
-                String sMsg
-    
-                Move (SFormat("From Parent%1InvokingObject handle: %2%1Nombre: %3", Character(10), String(hoInvokingObject), String(Name(hoInvokingObject)))) to sMsg
-                Send ShowInfoBox sMsg
+           
                 Case Break
 
             Case (NavigateData.eNavigateType = nfFromChild)
                 // If from child, this is a probably a parent lookup from a Zoom
-                String sMsg2
-    
-                Move (SFormat("From Child%1InvokingObject handle: %2%1Nombre: %3", Character(10), String(hoInvokingObject), String(Name(hoInvokingObject)))) to sMsg2
-                Send ShowInfoBox sMsg
+             
                 Case Break
 
             Case (NavigateData.eNavigateType = nfFromMain)
@@ -170,9 +165,15 @@ Error DFERR_PROGRAM "NavigateForward to this from-parent child Select view not y
 
             Case Else // must be nfUndefined
                 // This may be the start of a drilldown query or this may be used for some kind of custom query.
-
+          
         Case End
 
+    End_Procedure
+    Procedure OnGetNavigateBackData tWebNavigateData ByRef NavigateData Handle hoBackToView
+        Forward Send OnGetNavigateBackData (&NavigateData) hoBackToView
+        String sHoal
+        Move "hola" to sHoal
+        Send ShowInfoBox sHoal
     End_Procedure
 
 

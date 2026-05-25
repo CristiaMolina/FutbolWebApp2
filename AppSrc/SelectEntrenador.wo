@@ -81,6 +81,7 @@ Object oSelectEntrenador is a cWebView
 
             Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
                 Move True to NavigateData.bReadOnly
+                Send ShowInfoBox "ponte solo lectura"
             End_Procedure
 
         End_Object 

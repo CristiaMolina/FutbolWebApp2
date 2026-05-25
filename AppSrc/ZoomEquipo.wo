@@ -143,10 +143,7 @@ Object oZoomEquipo is a cWebView
         Case Begin
             Case (NavigateData.eNavigateType = nfFromMain)
                 // If from main, this is a propbably a main file Select to Zoom.
-                String sMsg
-    
-                Move (SFormat("From Main%1InvokingObject handle: %2%1Nombre: %3", Character(10), String(hoInvokingObject), String(Name(hoInvokingObject)))) to sMsg
-                Send ShowInfoBox sMsg
+               
                 Case Break
 
             Case (NavigateData.eNavigateType = nfFromParent)
@@ -162,6 +159,15 @@ Object oZoomEquipo is a cWebView
         Case End
 
         Send SetActionButtons
+        
+        If (HasRecord(Server(Self))) Begin
+            Send SetHeaderCaption ("Equipo:"*equipo.Nombre)
+            Send SetBreadcrumbCaption equipo.Nombre
+        End
+        Else Begin
+            Send SetHeaderCaption "Nuevo equipo"
+            Send SetBreadcrumbCaption "Nuevo"
+        End
 
     End_Procedure
 
